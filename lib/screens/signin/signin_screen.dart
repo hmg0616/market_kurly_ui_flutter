@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../theme.dart';
+import 'kurly_sign_form.dart';
 
 class SignInScreen extends StatelessWidget {
 
@@ -29,7 +30,7 @@ class SignInScreen extends StatelessWidget {
           preferredSize: Size.fromHeight(1.0),
         )
       ),
-      body: Container(),
+      body: KurlySignForm(),
     );
   }
 }
