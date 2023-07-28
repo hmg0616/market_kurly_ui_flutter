@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:market_kurly_ui/models/product.dart';
 
 import '../../theme.dart';
+import 'components/card_product_item.dart';
 import 'components/stack_product_item.dart';
 
 class RecommendScreen extends StatelessWidget {
@@ -42,12 +43,19 @@ class RecommendScreen extends StatelessWidget {
               child: Text("후기가 좋은 상품", style: textTheme().headline1),
             ),
             const SizedBox(height: 15),
-            Container(
+            Container( // CardProductItem는 Expanded 위젯을 감싼 Card 위젯이기 때문에, width / height 값을 지정해주어야함.
               height: 360,
-              color: Colors.red[100],
-              child: Center(
-                child: Text("수평 스크롤 영역 2"),
-              ),
+              child: ListView.builder(
+                padding: const EdgeInsets.only(bottom: 40),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => SizedBox(
+                  width: 320,
+                  child: CardProductItem(
+                    item: productList[index],
+                  ),
+                ),
+                itemCount: productList.length,
+              )
             )
           ],
         ),
